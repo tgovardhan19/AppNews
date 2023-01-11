@@ -19,11 +19,11 @@ class Welcome {
         articles: json["articles"] == null ? [] : List<Article?>.from(json["articles"]!.map((x) => Article.fromJson(x))),
     );
 
-    // Map<String, dynamic> toJson() => {
-    //     "status": status,
-    //     "totalResults": totalResults,
-    //     "articles": articles == null ? [] : List<dynamic>.from(articles!.map((x) => x!.toJson())),
-    // };
+     Map<String, dynamic> toJson() => {
+        "status": status,
+        "totalResults": totalResults,
+        "articles": articles == null ? [] : List<dynamic>.from(articles!.map((x) => x!.toJson())),
+    };
 }
 
 class Article {
@@ -58,16 +58,16 @@ class Article {
         content: json["content"],
     );
 
-    // Map<String, dynamic> toJson() => {
-    //     "source": source!.toJson(),
-    //     "author": author,
-    //     "title": title,
-    //     "description": description,
-    //     "url": url,
-    //     "urlToImage": urlToImage,
-    //     "publishedAt": publishedAt?.toIso8601String(),
-    //     "content": content,
-    // };
+    Map<String, dynamic> toJson() => {
+        "source": source!.toJson(),
+        "author": author,
+        "title": title,
+        "description": description,
+        "url": url,
+        "urlToImage": urlToImage,
+        "publishedAt": publishedAt?.toIso8601String(),
+        "content": content,
+    };
 }
 
 class Source {
@@ -84,8 +84,8 @@ class Source {
         name: json["name"],
     );
 
-    // Map<String, dynamic> toJson() => {
-    //     "id": id,
-    //     "name": name,
-    // };
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+    };
 }

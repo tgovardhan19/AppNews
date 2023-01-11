@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/apiservices/apiservice.dart';
+import 'package:flutter_application_1/models/model.dart';
 
 
 class HeadingPage extends StatefulWidget {
@@ -50,10 +52,43 @@ String? _selectedVal = "";
               });
              },
              )
-
-
         ],
       ),
     );
+  }
+}
+
+
+
+
+class LoadingPage extends StatefulWidget {
+  const LoadingPage({super.key});
+
+  @override
+  State<LoadingPage> createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Article?>?>(
+
+        future: NewsApiServices().fetchNewsArticle(),
+        builder: ((context, snapshot) {
+          if (snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            List<Article?>? newsArticle = snapshot.data;
+            return ListView.builder(
+                itemCount: newsArticle!.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(newsArticle[index]!.urlToImage!),
+                  );
+                });
+          }
+        }));
   }
 }

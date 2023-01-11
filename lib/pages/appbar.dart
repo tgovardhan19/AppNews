@@ -40,6 +40,7 @@ class _AppBarPageState extends State<AppBarPage> {
             SizedBox(height: 10),
             SearchPage(),
             HeadingPage(),
+            LoadingPage(),
           ],
         ),
       ),
